@@ -1,6 +1,5 @@
 package com.myspring.pro27;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -29,7 +28,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		
+
 		Date date = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
@@ -37,17 +36,17 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "main";
 	}
 	
 	@Autowired
 	BoardService boardService;
 	
-	@RequestMapping("/boardList.do")
+	@RequestMapping("/board/listArticles.do")
 	public String boardList(Locale locale, Model model) {
 		
 		model.addAttribute("boardList", boardService.boardList());
 		
-		return "boardList";
+		return "/board/boardList";
 	}
 }

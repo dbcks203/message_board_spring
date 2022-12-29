@@ -1,15 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+           "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.myspring.pro27.mappers.BoardDAO">
-
-	<select id="boardList"
-		resultType="com.myspring.pro27.entity.BoardVO">
-		select *
-		from tblboards
+	<select id="boardList" resultType="com.myspring.pro27.entity.BoardVO">
+		select 
+			`number` number
+			,parentno
+			,title
+			,content
+			,writeid
+			,writedate
+			,viewcount
+		from board
 	</select>
-
-
-
 </mapper>
