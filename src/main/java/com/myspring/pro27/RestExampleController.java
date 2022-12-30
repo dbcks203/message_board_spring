@@ -1,44 +1,42 @@
 package com.myspring.pro27;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.myspring.pro27.entity.MemberVO;
 import com.myspring.pro27.service.BoardService;
 
 /**
  * Handles requests for the application home page.
  */
-@Controller
-public class HomeController {
+@RestController
+@
+public class RestExampleController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "main";
-	}
+	@RequestMapping("/member/{uid}")
+	public List<MemberVO> memberView(@PathVariable("uid") String uid) {
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		for(int i=0;i<10;i++) {
+		MemberVO member = MemberVO.builder().uid("user"+i).pwd("1234").sex("M").address("혜화역").phone("010-2020").name("hong").build();
+		list.add(member);
+		}
+	return list;
 	
+	}
 	@Autowired
 	BoardService boardService;
 	

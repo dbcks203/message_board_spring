@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+           "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myspring.pro27.mappers.MemberDAO">
+	<select id="selectView" resultType="com.myspring.pro27.entity.MemberVO">
+		select 
+			uid,
+			pwd,
+			name,
+			sex,
+			address,
+			phone,
+			email,
+			createDate
+		from member
+		where uid = #{uid}
+	</select>
+	
+	
+	<select id="listMembers" resultType="com.myspring.pro27.entity.MemberVO">
+		select 
+			uid,
+			pwd,
+			name,
+			sex,
+			address,
+			phone,
+			email,
+			createDate
+		from member
+	</select>
+	
+</mapper>
